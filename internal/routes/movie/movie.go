@@ -1,18 +1,21 @@
 package movieRoutes
 
-import "github.com/gofiber/fiber/v2"
+import(
+	"github.com/gofiber/fiber/v2"
+	movieHandler "github.com/prathakpr/go_crud_app/internal/handlers/movie"
+)
 
 //The function SetupMovieRoutes takes a fiber.Router and handles endpoints to the movie model
 func SetupMovieRoutes(router fiber.Router) {
 	movie := router.Group("/movie")
     // Create a Movie
-    note.Post("/", func(c *fiber.Ctx) error {})
+    movie.Post("/", movieHandler.CreateMovies)
     // Read all Movie
-    note.Get("/", func(c *fiber.Ctx) error {})
+    movie.Get("/", movieHandler.GetMovies)
     // Read one Movie
-    note.Get("/:movieId", func(c *fiber.Ctx) error {})
+    movie.Get("/:movieId", movieHandler.GetMovie)
     // Update one Movie
-    note.Put("/:movieId", func(c *fiber.Ctx) error {})
+    movie.Put("/:movieId", movieHandler.UpdateMovie)
     // Delete one Movie
-    note.Delete("/:movieId", func(c *fiber.Ctx) error {})
+    movie.Delete("/:movieId", movieHandler.DeleteMovie)
 }
