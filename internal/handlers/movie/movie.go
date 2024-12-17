@@ -5,7 +5,6 @@ import (
     "github.com/google/uuid"        // UUID for unique IDs
     "github.com/prathakpr/go_crud_app/database" // Database connection
     "github.com/prathakpr/go_crud_app/internal/model"    // Movie model
-	//"time"
 )
 
 
@@ -68,13 +67,13 @@ func GetMovie(c *fiber.Ctx) error {
     return c.JSON(fiber.Map{"status": "success", "message": "Movies Found", "data": movie})
 }
 
-/*//Adding the Update Movie Handler
+//Adding the Update Movie Handler
 
 func UpdateMovie(c *fiber.Ctx) error {
     type updateMovie struct {
-        Title       string    `json:"title"`
-        ReleaseDate time.Time `json:"release_date"`
-        Rating      int       `json:"rating"`
+        Title      string  `json:"title"`
+        Director   string  `json:"director"`
+        Genre      string  `json:"genre"`
     }
     db := database.DB
     var movie model.Movie
@@ -99,8 +98,8 @@ func UpdateMovie(c *fiber.Ctx) error {
 
     // Edit the movie
     movie.Title = updateMovieData.Title
-    movie.ReleaseDate = updateMovieData.ReleaseDate
-    movie.Rating = updateMovieData.Rating
+    movie.Director = updateMovieData.Director
+    movie.Genre = updateMovieData.Genre
 
     // Save the Changes
     db.Save(&movie)
@@ -135,4 +134,3 @@ func DeleteMovie(c *fiber.Ctx) error {
     // Return success message
     return c.JSON(fiber.Map{"status": "success", "message": "Deleted Movie"})
 }
-*/
