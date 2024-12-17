@@ -6,6 +6,7 @@ import (
     "strconv"
 
     "github.com/prathakpr/go_crud_app/config"
+    "github.com/prathakpr/go_crud_app/internal/model"
     "gorm.io/driver/postgres"
     "gorm.io/gorm"
 )
@@ -33,4 +34,7 @@ func ConnectDB() {
     }
 
     fmt.Println("Connection Opened to Database")
+     // Migrate the database
+     DB.AutoMigrate(&model.Movie{})
+     fmt.Println("Database Migrated")
 }
