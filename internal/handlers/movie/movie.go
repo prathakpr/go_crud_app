@@ -1,9 +1,18 @@
 package movieHandler
 
+import (
+    "github.com/gofiber/fiber/v2"   // Fiber framework
+    "github.com/google/uuid"        // UUID for unique IDs
+    "github.com/prathakpr/go_crud_app/database" // Database connection
+    "github.com/prathakpr/go_crud_app/internal/model"    // Movie model
+	"time"
+)
+
+
 //Adding the Read Movies handler -
 func GetMovies(c *fiber.Ctx) error {
     db := database.DB
-    var movie []model.movie
+    var movies []model.Movie
 
     // find all movies in the database
     db.Find(&movies)
@@ -63,9 +72,9 @@ func GetMovie(c *fiber.Ctx) error {
 
 func UpdateMovie(c *fiber.Ctx) error {
     type updateMovie struct {
-        Title    string `json:"title"`
-        SubTitle string `json:"sub_title"`
-        Text     string `json:"Text"`
+        Title       string    `json:"title"`
+        ReleaseDate time.Time `json:"release_date"`
+        Rating      int       `json:"rating"`
     }
     db := database.DB
     var movie model.Movie
@@ -90,8 +99,8 @@ func UpdateMovie(c *fiber.Ctx) error {
 
     // Edit the movie
     movie.Title = updateMovieData.Title
-    movie.SubTitle = updateMovieData.SubTitle
-    movie.Text = updateMovieData.Text
+    movie.ReleaseDate = updateMovieData.ReleaseDate
+    movie.Rating = updateMovieData.Rating
 
     // Save the Changes
     db.Save(&movie)

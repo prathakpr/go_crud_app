@@ -3,6 +3,7 @@ package main
 import (
     "github.com/gofiber/fiber/v2"
 	"github.com/prathakpr/go_crud_app/database"
+	"github.com/prathakpr/go_crud_app/router"
 )
 
 func main() {
@@ -12,11 +13,8 @@ func main() {
 	// Connect to the Database
     database.ConnectDB()
 
-	// Send a string back for GET calls to the endpoint "/"
-	app.Get("/", func(c *fiber.Ctx) error {
-		err := c.SendString("And the API is UP!")
-		return err
-	})
+	// Setup the router
+	router.SetupRoutes(app)
 
     // Listen on PORT 300
     app.Listen(":3000")
