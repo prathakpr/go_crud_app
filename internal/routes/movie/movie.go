@@ -13,9 +13,9 @@ func SetupMovieRoutes(router fiber.Router) {
     // Read all Movie
     movie.Get("/", movieHandler.GetMovies)
     // Read one Movie
-    movie.Get("/:movieId", movieHandler.GetMovie)
+    /*movie.Get("/:movieId", movieHandler.GetMovie)
     // Update one Movie
     movie.Put("/:movieId", movieHandler.UpdateMovie)
     // Delete one Movie
-    movie.Delete("/:movieId", movieHandler.DeleteMovie)
+    movie.Delete("/:movieId", movieHandler.DeleteMovie)*/
 }

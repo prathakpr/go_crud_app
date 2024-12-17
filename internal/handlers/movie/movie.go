@@ -5,7 +5,7 @@ import (
     "github.com/google/uuid"        // UUID for unique IDs
     "github.com/prathakpr/go_crud_app/database" // Database connection
     "github.com/prathakpr/go_crud_app/internal/model"    // Movie model
-	"time"
+	//"time"
 )
 
 
@@ -68,7 +68,7 @@ func GetMovie(c *fiber.Ctx) error {
     return c.JSON(fiber.Map{"status": "success", "message": "Movies Found", "data": movie})
 }
 
-//Adding the Update Movie Handler
+/*//Adding the Update Movie Handler
 
 func UpdateMovie(c *fiber.Ctx) error {
     type updateMovie struct {
@@ -135,3 +135,4 @@ func DeleteMovie(c *fiber.Ctx) error {
     // Return success message
     return c.JSON(fiber.Map{"status": "success", "message": "Deleted Movie"})
 }
+*/
